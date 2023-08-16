@@ -1,3 +1,4 @@
 #files for git to ignore
 a.out
 Hospital.c
+Tests
