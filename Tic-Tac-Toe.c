@@ -25,10 +25,10 @@
 unsigned int gameFieldTracker = 0, lengthGameField = 9;
 char gameField[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 /* Prototypes */
-void gameBoard();
-void rules();
-const char* checkOS();
-int checkWinner();
+void gameBoard(void);
+void rules(void);
+const char* checkOS(void);
+int checkWinner(void);
 void board(void);
 bool checkInput(unsigned int coordinate, bool playerOneTurn);
 
@@ -64,7 +64,7 @@ int main(void)
   return EXIT_SUCCESS;
 }
 
-void rules(){
+void rules(void){
   char selection;
   do{
     printf("\nThe game consists of a 3 by 3 board in which two players have to \n");
@@ -81,7 +81,7 @@ void rules(){
 }
 
 
-const char* checkOS(){
+const char* checkOS(void){
   return (OS == NULL) ? "Null" : OS;
 }
 
@@ -166,7 +166,7 @@ bool checkInput(unsigned int coordinate, bool playerOneTurn){
   return false;
 }
 
-int checkWinner(){ 
+int checkWinner(void){ 
   if (gameField[0] == gameField[1] && gameField[1] == gameField[2]) {
     return 1;
   }else if (gameField[3] == gameField[4] && gameField[4] == gameField[5]) {
