@@ -31,7 +31,6 @@ const char* checkOS();
 int checkWinner();
 void board(void);
 bool checkInput(unsigned int coordinate, bool playerOneTurn);
-void changeToXorY(bool playerOneTurn, char coordinate);
 
 int main(void)
 {
