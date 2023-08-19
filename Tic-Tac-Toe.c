@@ -22,7 +22,7 @@
 #endif
 
 /*Global Variables*/
-unsigned int gameFieldTracker = 0, lengthGameField = 9;
+unsigned int gameFieldTracker = 0;
 char gameField[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 /* Prototypes */
 void gameBoard(void);
@@ -155,7 +155,7 @@ bool checkInput(unsigned int coordinate, bool playerOneTurn){
     gameFieldTracker++;
     gameField[coordinate - 1] = 'X'; 
     return true;
-  }else if(playerOneTurn == false && coordinate > 0 && coordinate < 9){
+  }else if(playerOneTurn == false && coordinate > 0 && coordinate <= 9){
     gameFieldTracker++;
     gameField[coordinate - 1] = 'O';
     return true;

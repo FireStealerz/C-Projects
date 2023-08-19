@@ -84,7 +84,6 @@ const char* checkOS(void){
 void gameBoard(){
   char playerOne[20], playerTwo[20] ;
   unsigned int winner, coordinate, gameFieldTracker = 0;
-  unsigned int *ptrToGameTracker = &gameFieldTracker;
   char gameField[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
   bool gameState = true, playerOneTurn = true;
   printf("\nPlease enter name of player 1 - X: ");
@@ -98,7 +97,7 @@ void gameBoard(){
       printf("Insert coordinate from 1 to 9: \n");
       scanf(" %d", &coordinate);
       getchar();  
-    }while(checkInput(coordinate, ptrToGameTracker, playerOneTurn, gameField) == false);
+    }while(checkInput(coordinate, &gameFieldTracker, playerOneTurn, gameField) == false);
       board(gameField);
       playerOneTurn = false;
     }else if (playerOneTurn == false) {
@@ -107,7 +106,7 @@ void gameBoard(){
       printf("Insert coordinate from 1 to 9: \n");
       scanf(" %d", &coordinate);
       getchar();
-      }while(checkInput(coordinate, ptrToGameTracker, playerOneTurn, gameField) == false);
+      }while(checkInput(coordinate, &gameFieldTracker, playerOneTurn, gameField) == false);
       board(gameField);
       playerOneTurn = true;
     } 
@@ -149,11 +148,11 @@ bool checkInput(unsigned int coordinate, unsigned int* gameFieldTracker, bool pl
       return false;
     }
   if (playerOneTurn == true && coordinate > 0 && coordinate <=  9){
-    gameFieldTracker++;
+     *gameFieldTracker += 1;
     gameField[coordinate - 1] = 'X'; 
     return true;
-  }else if(playerOneTurn == false && coordinate > 0 && coordinate < 9){
-    gameFieldTracker++;
+  }else if(playerOneTurn == false && coordinate > 0 && coordinate <= 9){
+    *gameFieldTracker += 1;
     gameField[coordinate - 1] = 'O';
     return true;
   }else {
